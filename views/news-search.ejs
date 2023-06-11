@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style-news.css">
+
+<% if( typeof user == 'undefined' ) { %>
+  <!-- Navigation Bar -->
+  <div class="navbar bg-purple">
+      <a href="/">
+          <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+      </a>
+      <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+      <!-- Desktop Nav -->
+      <ul class="max-line">
+          <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+          <li class="max-list actived"><a href="/news">Berita</a></li>
+          <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+          <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+          <li class="max-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+      </ul>
+      <!-- Android/Apple Nav -->
+      <div class="for-js nav-menu">
+          <ul class="min-line">
+              <li class="min-list"><a href="/home">Beranda</a></li>
+              <li class="min-list actived"><a href="/news">Berita</a></li>
+              <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+              <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+              <li class="min-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+          </ul>
+      </div> 
+  </div>
+<% } else{ %>
+  <!-- Navigation Bar -->
+  <div class="navbar bg-purple">
+      <a href="/">
+          <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+      </a>
+      <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+      <!-- Desktop Nav -->
+      <ul class="max-line">
+          <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+          <li class="max-list actived"><a href="/news">Berita</a></li>
+          <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+          <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+          <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+      </ul>
+      <!-- Android/Apple Nav -->
+      <div class="for-js nav-menu">
+          <ul class="min-line">
+              <li class="min-list"><a href="/home">Beranda</a></li>
+              <li class="min-list actived"><a href="/news">Berita</a></li>
+              <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+              <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+              <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+          </ul>
+      </div> 
+  </div>
+  <% } %>
+  
+  <div class="container">
+    <h1 class="text-center" id="coba">Berita Liga Inggris</h1>
+  
+    <div class="desc-alert">
+      <%- include('./partials/messages.ejs') %>
+    </div>
+    <% if( typeof user != 'undefined' ) { %>
+      <% if( user.role == 'admin' || user.role == 'writer' ) { %>
+        <a href="/news/postNews" style="text-decoration: none;">
+          <div class="postNews-rdr text-center purple bg-white br-5" style="padding: 2.5% 0; margin: .5%;">
+            Posting Berita
+          </div>
+        </a>
+      <% } %>
+    <% } %>
+    <a href="/news" style="text-decoration: none;">
+        <div class="postNews-rdr text-center purple bg-white br-5" style="padding: 2.5% 0; margin: .5%;">
+          Kembali
+        </div>
+      </a>
+  
+    <div class="thumbnail-news-box bg-white">
+      <div class="search-box br-5 bg-tr-purple" id="searchBox" style="padding: .5% 2.5%; padding-bottom: 2.5%;">
+        <p class="text-center font-larger white">Cari Berita:</p>
+        <form action="/news" method="GET">
+          <input type="search" name="search" id="search" class="br-10 white bg-purple font-larger" value="<%= typeof searchV != 'undefined' ? searchV : '' %>" placeholder="cari.." style="width: 100%; outline: none; border: none; padding: 2px .5%;">
+          <input type="submit" value="Cari" class="sbm br-10 purple bg-white" style="width: 100%; outline: none; border: none; padding: 2px .5%; margin: .5% 0; cursor: pointer;">
+        </form>
+      </div>
+      <div class="thumbnail">
+          <% for( const m of news ) { %>
+            <div class="content-box br-5 purple text-left" data-params="<%= m.value %>">
+                <div class="" style="padding: 2%; margin: 1vh 0;">
+                <table>
+                <tr>
+                <td class="td-img font-larger" rowspan="2">
+                <img src="<%= m.imgThumbnail %>" alt="">
+                </td>
+                <td class="td-title font-larger">
+                <p class="thumnail-data">
+                <%= m.thumbnail %>
+                </p>
+                </td>
+                </tr>
+                <tr>
+                <td class="td-date font-smaller text-right">
+                <%= m.dateCreate %>, <%= m.timeCreate %> WIB
+                </td>
+                </tr>
+                </table>
+                </div>
+                </div>
+          <% } %>
+      </div>
+      <%- nb %>
+    </div>
+  </div>
+
+<script src="./js/script.js"></script>
+<script src="./js/script-news-search.js"></script>

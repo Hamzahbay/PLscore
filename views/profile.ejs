@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style-profile.css">
+<!-- Navigation Bar -->
+<div class="navbar bg-purple">
+    <a href="/">
+        <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+    </a>
+    <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+    <!-- Desktop Nav -->
+    <ul class="max-line">
+        <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+        <li class="max-list"><a href="/news">Berita</a></li>
+        <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+        <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+        <li class="max-list actived"><a href="/profile"><%= user.username %></a></li>
+    </ul>
+    <!-- Android/Apple Nav -->
+    <div class="for-js nav-menu">
+        <ul class="min-line">
+            <li class="min-list"><a href="/home">Beranda</a></li>
+            <li class="min-list"><a href="/news">Berita</a></li>
+            <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="min-list actived"><a href="/profile"><%= user.username %></a></li>
+        </ul>
+    </div> 
+</div>
+
+<% if( user.role == 'admin' ) { %>
+    <style>
+        body {
+            height: 100vh;
+        }
+    </style>
+    <div class="container" data-footer-none="true">
+        <div class="first">
+            <p class="halo">
+                Halo, <%= user.username %> (Admin)
+                <!-- <a href="/delete/<%= user.user_id %>" onclick="return confirm('Apakah Anda Yakin Menghapus Akun Anda')"><i class="fas fa-trash-alt purple"></i></a>
+                <a href="/update/<%= user.user_id %>"><i class="fas fa-pen purple"></i></a> -->
+            </p>
+            <em>email yang tertaut <%= user.email %></em><br><br>
+            <span class="items-content bg-tr-purple br-5 white" onclick="location.href = '/profile/update/<%= user._id %>'">Perbarui <i class="fas fa-pen white"></i></span>
+            <span class="items-content bg-tr-purple br-5 white" onclick="let conf = confirm('Apakah Anda Yakin?'); if( conf == true ) {return location.href = '/profile/delete/<%= user._id %>'} else return">Hapus <i class="fas fa-trash-alt  white"></i></span>
+            <span class="items-content bg-tr-purple br-5 white" onclick="location.href = '/account/logout'">Keluar <i class="fas fa-sign-out-alt white"></i></span>
+        </div>
+        <div class="user-data bg-lightgray">
+            <table>
+                <thead class="bg-purple white">
+                    <tr>
+                        <td>Id Pengguna</td>
+                        <td>Nama</td>
+                        <td>Email</td>
+                        <td>Akses</td>
+                        <td colspan="2">Kendali</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% userData.forEach(x => { %>
+                        <% if( x.role == 'admin' ) { %>
+                            <tr>
+                                <td><%= x.user_id %></td>
+                                <td><%= x.username %></td>
+                                <td><%= x.email %></td>
+                                <td><%= x.role %></td>
+                                <td></td>
+                            </tr>
+                        <% } else{ %>
+                            <tr>
+                                <td><%= x.user_id %></td>
+                                <td><%= x.username %></td>
+                                <td><%= x.email %></td>
+                                <td id="role" data-id="<%= x._id %>"><%= x.role %></td>
+                                <td class="text-center">
+                                    <a ><i class="fas fa-trash-alt purple" id="deleteUser" style="cursor: pointer;"></i></a>
+                                    <a ><i class="fas fa-pen purple" id="updateRole" style="cursor: pointer;"></i></a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<% } else{ %>
+    
+    <div class="container" data-user-id="<%= user.user_id %>">
+        <div class="first">
+            <p class="halo">
+                Halo, <%= user.username %>
+                <!-- <a href="/delete/<%= user.user_id %>" onclick="return confirm('Apakah Anda Yakin Menghapus Akun Anda')"><i class="fas fa-trash-alt purple"></i></a>
+                <a href="/update/<%= user.user_id %>"><i class="fas fas fa-pen purple"></i></a> -->
+            </p>
+            <em>email yang tertaut <%= user.email %></em><br><br>
+            <span class="items-content bg-tr-purple br-5 white" onclick="location.href = '/profile/update/<%= user._id %>'">Perbarui <i class="fas fa-pen white"></i></span>
+            <span class="items-content bg-tr-purple br-5 white" onclick="let conf = confirm('Apakah Anda Yakin?'); if( conf == true ) {return location.href = '/profile/delete/<%= user._id %>'} else return">Hapus <i class="fas fa-trash-alt  white"></i></span>
+            <span class="items-content bg-tr-purple br-5 white" onclick="location.href = '/account/logout'">Keluar <i class="fas fa-sign-out-alt white"></i></span>
+        </div>
+        <div class="second text-center bg-lightgray">
+            <% if( user.role == 'writer' ) { %>
+                <div class="news-writer-box box">
+                    <div class="ibox">
+                        <div class="box-title bg-purple">Berita Anda</div>
+                        <div class="content-box">
+                            <%= //typeof favoNews == 'undefined' ? favoNews: 'Belum Ada' %>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <div class="news-box box">
+                <div class="ibox">
+                    <div class="box-title bg-purple">Berita Yang Disukai</div>
+                    <div class="content-box">
+                        <%= //typeof favoNews == 'undefined' ? favoNews: 'Belum Ada' %>
+                    </div>
+                </div>
+            </div>
+            <div class="player-box box">
+                <div class="ibox">
+                    <div class="box-title bg-purple">Pemain Favorit</div>
+                    <div class="content-box">
+                        <%= //typeof favoPlayer == 'undefined' ? favoPlayer: 'Belum Ada' %>
+                    </div>
+                </div>
+            </div>
+            <div class="fix-box box">
+                <div class="ibox">
+                    <div class="box-title bg-purple">Pertandingan Favorit</div>
+                    <div class="content-box">
+                        <%= //typeof favoMoment == 'undefined' ? favoMoment: 'Belum Ada' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
+<script src="./js/script.js"></script>
+<script src="./js/script-profile.js"></script>

@@ -1,0 +1,405 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+    background-color: lightgray;
+    overflow-x: hidden;
+}
+
+.font-arial {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img, table {
+    width: 100%;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: 5rem;
+    top: 0;
+    z-index: 5;
+    transition: ease-in 250ms;
+}
+.navbar ul li span {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    margin-left: 5px;
+}
+.navbar .logo span {
+    position: absolute;
+    margin-left: 7rem;
+    top: 30%;
+    color: whitesmoke;
+    font-size: 30px;
+}
+.navbar .logo span em {
+    font-size: smaller;
+    text-decoration: line-through;
+}
+.navbar .max-line {
+    display: inline-flex;
+    list-style: none;
+}
+.navbar .logo img {
+    width: 80px;
+    position: absolute;
+    top: 8px;
+    left: 2rem;
+}
+.navbar .max-line {
+    top: 10%;
+    right: 2vw;
+    position: absolute;
+    z-index: 7;
+}
+.navbar .max-line .max-list {
+    margin-top: 2px;
+}
+.navbar .max-line .max-list a {
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 30px 2vw;
+    box-sizing: border-box;
+}
+.navbar .max-line .max-list a:hover , .navbar .material-icons:hover{
+    color: #87508b;
+    transition: ease-in-out 200ms;
+}
+
+
+.navbar .material-icons {
+    display: none;
+    float: right;
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.navbar .min-line {
+    margin-top: 40px;
+    position: absolute;
+    border-radius: 0 0 10px 10px;
+    padding: 0 40px;
+    padding-top: 5%;
+    top: 34%;
+    right: 0;
+    transition: ease 200ms;
+    z-index: 5;
+    display: none;
+}
+.navbar .min-line .min-list {
+    margin-bottom: 20px;
+    list-style: none;
+}
+.navbar .min-line .min-list a {
+    color: whitesmoke;
+    text-decoration: none;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.navbar .min-line .min-list a:hover {
+    color: #87508b;
+    transition: ease-in-out 200ms;
+    transform: scale(0.8);
+}
+.navbar .min-line .list-min1 a {
+    padding-right: 59px;
+}
+.navbar .min-line .list-min2 a {
+    padding-right: 82px;
+}
+.navbar .min-line .list-min4 a {
+    padding-right: 63px;
+}
+.navbar .min-line .list-min5 a {
+    padding-right: 116.5px;
+}
+.for-js {
+    position: fixed;
+    right: 0;
+    top: 2rem;
+    transition: cubic-bezier(0.86, 0, 0.07, 1) 300ms;
+}
+.nav-menu {
+    right: -100%;
+}
+
+.not-user-max-line {
+    top: 10%;
+    right: 2vw;
+    position: absolute;
+    z-index: 7;
+    list-style: none;
+    display: inline-flex;
+}
+.not-user-max-list {
+    margin-top: .6vh;
+}
+.not-user-max-list a {
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 0 1vw;
+    margin: 30px 1vw;
+    box-sizing: border-box;
+}
+
+.not-user-max-list a:hover {
+    color: #87508b;
+    transition: ease-in-out 200ms;
+    transform: scale(0.8);
+}
+
+.navbar .max-line .actived a, .navbar .max-line .actived i {
+    color: #87508b;
+    transform: scale(0.8);
+}
+.navbar .min-line .actived a, .navbar .max-line .actived i {
+    color: #87508b;
+    transform: scale(0.8);
+}
+.animate1 {
+    animation: anm1 linear 100ms;
+}
+.footer {
+    padding: 2.5% 0;
+    position: sticky;
+    top: 100%;
+    margin: 0;
+    font-size: smaller;
+}
+@keyframes anm1 {
+    20%{
+        transform: translateX(-5px);
+    }
+    40%{
+        transform: translateX(5px);
+    }
+    60%{
+        transform: translateX(-5px);
+    }
+    80%{
+        transform: translateX(5px);
+    }
+    100%{
+        transform: translateX(-5px);
+    }
+}
+
+
+@media (max-width: 900px) {
+    .navbar .max-line {
+        display: none;
+    }
+    .navbar .material-icons, .navbar .min-line, .min-bg {
+        display: block;
+    }
+    /* .for-js {
+        top: 4vw;
+    } */
+    .navbar, .for-js .min-line {
+        background-color: #37003c;
+    }
+}
+@media (max-width: 600px) {
+    .navbar .min-line {
+        margin-top: 30px;
+    }
+    .navbar .logo span {
+        /* top: 40%; */
+        margin-left: 5%;
+        font-size: 20px;
+    }
+    .navbar .logo img {
+        display: none;
+    }
+    .footer {
+        font-size: xx-small;
+    }
+    .not-user-max-list {
+        margin-top: 0;
+    }
+    .not-user-max-list a {
+        margin: 30px 2vw;
+    }
+    .navbar {
+        height: 4rem;
+    }
+}
+@media(max-width: 480px) {
+}
+@media (max-width: 240px) {
+    .navbar .logo img {
+        display: none;
+    }
+    .navbar .logo span {
+        /* margin-left: -20px; */
+        display: none;
+    }
+    .nav-menu {
+        right: -500%;
+    }
+}
+
+.br-5 {
+    border-radius: 5px;
+}
+.br-10 {
+    border-radius: 10px;
+}
+
+.m-5 {
+    margin: 5%;
+}
+.m-10 {
+    margin: 10%;
+}
+
+.mt-5 {
+    margin-top: 5%;
+}
+.mt-10 {
+    margin-top: 10%;
+}
+
+.mb-5 {
+    margin-bottom: 5%;
+}
+.mb-10 {
+    margin-bottom: 10%;
+}
+
+.ml-5 {
+    margin-left: 5%;
+}
+.ml-10 {
+    margin-left: 10%;
+}
+
+.mr-5 {
+    margin-right: 5%;
+}
+.mr-10 {
+    margin-right: 10%;
+}
+
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+
+.font-xxsmall {
+    font-size: xx-small;
+}
+.font-xsmall {
+    font-size: x-small;
+}
+.font-smaller {
+    font-size: smaller;
+}
+.font-small {
+    font-size: small;
+}
+.font-meium {
+    font-size: medium;
+}
+.font-large {
+    font-size: large;
+}
+.font-larger {
+    font-size: larger;
+}
+.font-xlarge {
+    font-size: x-large;
+}
+.font-xxlarge {
+    font-size: xx-large;
+}
+
+.none-decoration {
+    text-decoration: none;
+}
+
+.bg-tr-purple {
+    background-color: #37003cc7;
+}
+.bg-purple {
+    background-color: #37003c;
+}
+.bg-black {
+    background-color: black;
+}
+.bg-gray {
+    background-color: gray;
+}
+.bg-lightgray {
+    background-color: lightgray;
+}
+.bg-white {
+    background-color: whitesmoke;
+}
+
+.purple {
+    color: #37003c;
+}
+.black {
+    color: black;
+}
+.gray {
+    color: gray;
+}
+.lightgray {
+    color: lightgray;
+}
+.white {
+    color: whitesmoke;
+}
+
+.float-right {
+    float: right;
+}
+.float-left {
+    float: left;
+}
+
+.position-absolute {
+    position: absolute;
+}
+.position-fixed {
+    position: fixed;
+}
+.position-sticky {
+    position: sticky;
+}
+
+.display-none {
+    display: none;
+}
+.opac-0 {
+    opacity: 0;
+}
+.opac-5 {
+    opacity: .5;
+}
+.opac-10 {
+    opacity: 1;
+}
+
+.scale-10 {
+    scale: 1;
+}
+.scale-5 {
+    scale: .5;
+}
+.scale-0 {
+    scale: 0;
+}

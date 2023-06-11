@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="./../css/style.css">
+<link rel="stylesheet" href="./../css/style-login.css">
+<!-- Navigation Bar -->
+<div class="navbar bg-purple">
+    <a href="/">
+        <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+    </a>
+    <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+    <!-- Desktop Nav -->
+    <ul class="max-line">
+        <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+        <li class="max-list"><a href="/news">Berita</a></li>
+        <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+        <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+        <li class="max-list actived"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+    </ul>
+    <!-- Android/Apple Nav -->
+    <div class="for-js nav-menu">
+        <ul class="min-line">
+            <li class="min-list"><a href="/home">Beranda</a></li>
+            <li class="min-list"><a href="/news">Berita</a></li>
+            <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="min-list actived"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+        </ul>
+    </div> 
+</div> 
+
+    <!-- Login/Register Content -->
+    <div class="content">
+        <div class="choice">
+            <a href="/account/login"><span>Masuk Akun</span></a>
+            <a href="/account/register"><span class="on">Buat Akun</span></a>
+        </div>
+        <div class="box">
+            <div class="desc-alert">
+                <%- include('./partials/messages.ejs') %>
+            </div>
+            <form class="register" action="/account/register" method="POST">
+                <p>Nama Pengguna </p>
+                <input type="text" name="username" id="username" placeholder="nama pengguna" minlength="4" maxlength="12" autocomplete="off" required="true">
+                <p>Email </p>
+                <input type="email" name="email" id="email" placeholder="email" required>
+                <p>Tim Favorit </p>
+                <select name="favourite" id="favourite" required>
+                    <option value="" hidden>Pilih Tim Favorit Anda</option>
+                </select>
+                <p>Sandi </p>
+                <input type="password" name="password" id="password" style="margin-bottom: 2.5%;" placeholder="kata sandi" autocomplete="off" minlength="6" required="true">
+                <span id="showPass1">Lihat Sandi</span>
+                <p>Konfirmasi Sandi </p>
+                <input type="password" name="password2" id="password2" style="margin-bottom: 2.5%;" placeholder="konfirmasi sandi" autocomplete="off" minlength="6" required="true">
+                <span id="showPass2">Lihat Sandi</span>
+                <p><input type="checkbox" name="agree" id="agree" required="true"><label for="agree">Saya setuju dengan ketentuan yang berlaku.</label> <span>klik disini</span></p>
+                <p><button type="submit">Buat</button></p>
+            </form>
+        </div>
+    </div>
+    <div class="popup-bg display-none"></div>
+    <div class="popup display-none">
+        <h3>Ketentuan PLscore</h3>
+        <ol>
+            <li>Mempergunakan web ini dengan bijak</li>
+            <li>Menjaga kata-kata</li>
+            <li>Tidak menggunakan akun ilegal</li>
+        </ol>
+        <div>Mengerti</div>
+    </div>
+
+<script src="./../js/script.js"></script>
+<script src="./../js/script-login.js"></script>

@@ -1,0 +1,231 @@
+<link rel="stylesheet" href="./css/style.css">
+
+<% if( typeof user == 'undefined' ) { %>
+    <!-- Navigation Bar -->
+    <div class="navbar bg-purple">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list actived"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list actived"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+            </ul>
+        </div> 
+    </div>
+<% } else{ %>
+    <!-- Navigation Bar -->
+    <div class="navbar bg-purple">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list actived"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list actived"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+            </ul>
+        </div> 
+    </div>
+<% } %>
+
+<style>
+    .container {
+        margin: 10% 5%;
+    }
+    .container .items div {
+        display: inline-flex;
+        background-color: #37003cc7;
+        border-radius: 5px;
+        color: whitesmoke;
+        padding: 1% .5%;
+        margin: 1.5% .5%;
+        cursor: pointer;
+        font-size: smaller;
+    }
+    .container .items div:hover {
+        transform: scale(1.05);
+        transition: all 200ms;
+    }
+    .container .content-box {
+        text-align: center;
+    }
+    .container .content-box .box {
+        background-color: whitesmoke;
+        border-radius: 5px;
+        max-width: 300px;
+        display: inline-flex;
+        margin: 2.5%;
+        cursor: pointer;
+    }
+    .container .content-box .box thead tr td {
+        background-color: #37003cc7;
+        color: whitesmoke;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+        font-size: 1rem;
+    }
+    .container .content-box .box img {
+        min-width: 200px;
+        transition: all 100ms;
+    }
+    .container .content-table {
+        /* padding: .5%; */
+        border-radius: 5px;
+        background-color: whitesmoke;
+        overflow-x: auto;
+    }
+    .container .content-table table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .container .content-table table tr td {
+        border: solid 1px lightgray;
+    }
+    .container .content-table table thead {
+        text-align: center;
+        font-size: smaller;
+        background-color: #37003cc7;
+        color: whitesmoke;
+    }
+    .container .content-table table tbody img {
+        width: 2rem;
+    }
+    .container .content-table table tbody tr .img {
+        border-right: none;
+        border-left: none;
+        text-align: center;
+    }
+    .container .content-table table tbody tr .name {
+        border-left: none;
+    }
+    .container .content-table table tbody tr .pos {
+        border-right: none;
+        text-align: center;
+    }
+    .container .content-table table tbody tr .tim {
+        cursor: pointer;
+    }
+    .container .content-table table tbody tr .t-items {
+        text-align: center;
+        font-size: smaller;
+    }
+
+    .loading {
+        margin: 25vh 47%;
+    }
+
+    @media( max-width: 1080px ) {
+    }
+    @media( max-width: 800px ) {
+        .container {
+            margin: 15% 5%;
+        }
+        .container .content-table table {
+            width: 120%;
+        }
+        .container .items div {
+            padding: 1%;
+        }
+    }
+    @media( max-width: 600px ) {
+        .container .content-box .box {
+            max-width: 200px;
+        }
+        .container .items div {
+            padding: 2%;
+        }
+        .container .content-box .box img {
+            min-width: 100px;
+        }
+        .container .content-table table tbody {
+            font-size: smaller;
+        }
+    }
+    @media( max-width: 480px ) {
+        .container {
+            margin: 20% 1%;
+        }
+    }
+    @media( max-width: 400px ) {
+        .container {
+            margin: 25% 1%;
+        }
+        .container .content-table table {
+            width: 150%;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="titles text-center">
+        <h2 class="purple text-center">Tim Liga Inggris</h2>
+        <div class="items">
+            <div id="table">Klasemen</div>
+            <div onclick="location.href = '/spec/ts'">Top Skor</div>
+            <div onclick="location.href = '/spec/ta'">Top Assist</div>
+            <div onclick="location.href = '/spec/tcs'">Top Cleansheets</div>
+            <div onclick="location.href = '/spec/tyc'">Top Kartu Kuning</div>
+            <div onclick="location.href = '/spec/trc'">Top Kartu Merah</div>
+            <div onclick="location.href = '/spec/bf'">Penyerang Terbaik</div>
+            <div onclick="location.href = '/spec/bm'">Gelandang Terbaik</div>
+            <div onclick="location.href = '/spec/bd'">Defender Terbaik</div>
+        </div>
+    </div>
+
+    <div class="loading" id="loading" style="display: inline-flex;">
+        <div style="width: 2vw; height: 2vw; background-color: #37003c7d; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+        <div style="width: 2vw; height: 2vw; background-color: #37003cc7; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+        <div style="width: 2vw; height: 2vw; background-color: #37003c; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+    </div>
+
+    <div class="content-box display-none"></div>
+    <div class="content-table display-none">
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="3">Klub</td>
+                    <td data-expl="Main (Penampilan dalam satu musim)">M</td>
+                    <td data-expl="Menang (Kemenangan laga dalam satu musim)">M</td>
+                    <td data-expl="Seri (Laga Seri satu musim)">S</td>
+                    <td data-expl="Kalah (Kekalahan laga dalam satu musim)">K</td>
+                    <td data-expl="Gol Masuk (Total gol yang dicetak dalam satu musim)">GM</td>
+                    <td data-expl="Gol Kebobolan (Total kebobolan gol dalam satu musim)">GK</td>
+                    <td data-expl="Selisih Gol (Selisih antara gol masuk dan gol kebobolan dalam satu musim)">SG</td>
+                    <td data-expl="Rata-rata Gol (Rata-rata Gol per Penampilan dalam satu musim)">RG</td>
+                    <td data-expl="Poin (Poin dalam satu musim)">P</td>
+                    <td data-expl="Point Per Game (Poin per pertandingan dalam satu musim)">PPG</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="./js/script.js"></script>
+<script src="./js/script-spec.js"></script>

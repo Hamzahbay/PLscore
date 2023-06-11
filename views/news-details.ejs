@@ -1,0 +1,259 @@
+<link rel="stylesheet" href="./../css/style.css">
+<link rel="stylesheet" href="./../css/style-news.css">
+
+<% if( typeof user == 'undefined' ) { %>
+  <!-- Navigation Bar -->
+  <div class="navbar bg-purple">
+      <a href="/">
+          <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+      </a>
+      <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+      <!-- Desktop Nav -->
+      <ul class="max-line">
+          <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+          <li class="max-list actived"><a href="/news">Berita</a></li>
+          <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+          <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+          <li class="max-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+      </ul>
+      <!-- Android/Apple Nav -->
+      <div class="for-js nav-menu">
+          <ul class="min-line">
+              <li class="min-list"><a href="/home">Beranda</a></li>
+              <li class="min-list actived"><a href="/news">Berita</a></li>
+              <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+              <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+              <li class="min-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+          </ul>
+      </div> 
+  </div>
+<% } else{ %>
+  <!-- Navigation Bar -->
+  <div class="navbar bg-purple">
+      <a href="/">
+          <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+      </a>
+      <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+      <!-- Desktop Nav -->
+      <ul class="max-line">
+          <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+          <li class="max-list actived"><a href="/news">Berita</a></li>
+          <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+          <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+          <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+      </ul>
+      <!-- Android/Apple Nav -->
+      <div class="for-js nav-menu">
+          <ul class="min-line">
+              <li class="min-list"><a href="/home">Beranda</a></li>
+              <li class="min-list actived"><a href="/news">Berita</a></li>
+              <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+              <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+              <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+          </ul>
+      </div> 
+  </div>
+<% } %>
+
+<div class="container" data-params="<%= values %>" id="container">
+  <div class="news bg-white br-5 font-larger font-arial" style="line-height: 2;">
+        <div class="content-items">
+          <table class="bg-tr-purple white">
+            <tr>
+              <td class="text-left font-smaller">
+                <!-- Diposting Tanggal: -->
+                Penulis: <%= news.writer %>
+              </td>
+              <td class="text-right font-smaller">
+                Sumber: <%= news.source %>
+              </td>
+            </tr>
+              </td>
+            </tr>
+          </table>
+          </div>
+        <div class="box font-arial">
+          <%- news.content %>
+        </div>
+        <% if( typeof user != 'undefined' ) { %>
+          <% if( user.user_id == news.writer_id ) { %>
+            <a href="/news/delete/<%= news._id %>">
+              <div class="items-box bg-tr-purple text-center br-5" onclick="return confirm('Apakah Anda Yakin Untuk Menghapus Beita Ini?')">
+                <i class="fas fa-trash-alt white"></i> 
+              </div>
+            </a>
+            <div class="items-box bg-tr-purple text-center br-5" onclick="location.href = '/news/modify/<%= news._id %>'">
+              <i class="fas fa-pen white"></i> 
+            </div>
+          <% } else if( user.role == 'admin' || user.role == 'staff' ) { %>
+            <a href="/news/delete/<%= news._id %>">
+              <div class="items-box bg-tr-purple text-center br-5" onclick="return confirm('Apakah Anda Yakin Untuk Menghapus Beita Ini?')">
+                <i class="fas fa-trash-alt white"></i> 
+              </div>
+            </a>
+          <% } %>
+        <% } %>
+        <div class="items-box bg-tr-purple text-center br-5" onclick="location.href = '/news/back'">
+          <i class="fas fa-arrow-left white"></i> 
+        </div>
+      </div>
+      <% if( typeof user != 'undefined' ) { %>
+        <div class="content-bottom-items bg-tr-purple text-center">
+          <div class="loading" id="loading" style="display: inline-flex;">
+            <div style="width: 2vw; height: 2vw; background-color: rgb(155, 155, 155); margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+            <div style="width: 2vw; height: 2vw; background-color: rgb(205, 205, 205); margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+            <div style="width: 2vw; height: 2vw; background-color: rgb(255, 255, 255); margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+          </div>
+          <div class="sentiment display-none" data-like="<%= like %>">
+            <!-- action="/news/<%= values %>" method="POST"  -->
+            <form id="likeForm" class="display-none">
+              <input type="checkbox" name="like" id="like" checked>
+              <input type="submit" value="like" id="likeBtn">
+            </form>
+            <form id="unlikeForm" class="display-none">
+              <input type="checkbox" name="unlike" id="unlike" checked>
+              <input type="submit" value="like" id="unlikeBtn">
+            </form>
+            <p>
+              <label for="unlikeBtn">
+                <i class="material-icons emj white" id="unlikeE">sentiment_very_dissatisfied</i>
+              </label>
+            </p>
+            <p>
+              <label for="likeBtn">
+                <i class="material-icons emj white" id="likeE">sentiment_very_satisfied</i>
+              </label>
+            </p>
+            <p>
+              <span class="news-percentage white" id="percentage">
+                0%
+              </span>
+            </p>
+            <p class="views float-right">
+              <span class="news-views white" id="views" style="margin-right: 5%; margin-left: -5%; font-size: 120%;">0</span>
+              <i class="fas fa-eye white" style="background: none; scale: .8;"></i>
+            </p>
+          </div>
+          <div class="desc-sentiment display-none">
+            <p>
+              <span class="like-count bg-white purple br-5" id="likeNumber" style="padding: .25%;"></span>
+            </p>
+            <p class="text white">
+              Orang Menyukai Berita Ini
+            </p>
+            <p class="up-down float-right" style="margin-top: 0;">
+              <span class="news-up-down white" id="thumbsUpDown" style="margin-right: 5%; margin-left: -5%; font-size: 120%;">0</span>
+              <i class="material-icons white" style="background: none; scale: .6;">thumbs_up_down</i>
+            </p>
+          </div>
+        </div>
+        <% } %>
+        <% if( typeof user == 'undefined' ) { %>
+          <div class="content-bottom-items bg-tr-purple text-center">
+            <div class="loading" id="loading" style="display: inline-flex;">
+              <div style="width: 2vw; height: 2vw; background-color: rgb(155, 155, 155); margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+              <div style="width: 2vw; height: 2vw; background-color: rgb(205, 205, 205); margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+              <div style="width: 2vw; height: 2vw; background-color: rgb(255, 255, 255); margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+            </div>
+            <div class="sentiment display-none" data-like="">
+              <form action="/news/<%= values %>" method="POST" class="display-none">
+                <input type="submit" disabled value="like" id="likeBtn">
+              </form>
+              <form action="/news/<%= values %>" method="POST" class="display-none">
+                <input type="submit" disabled value="like" id="unlikeBtn">
+              </form>
+              <p onclick="location.href = '/account/login'">
+                <label for="unlikeBtn">
+                  <i class="material-icons white" id="unlikeE">sentiment_very_dissatisfied</i>
+                </label>
+              </p>
+              <p onclick="location.href = '/account/login'">
+                <label for="likeBtn">
+                  <i class="material-icons white" id="likeE">sentiment_very_satisfied</i>
+                </label>
+              </p>
+              <p onclick="location.href = '/account/login'">
+                <span class="news-percentage white" id="percentage">
+                  0%
+                </span>
+              </p>
+              <p class="views float-right" onclick="location.href = '/account/login'">
+                <span class="news-views white" id="views" style="margin-right: 5%; margin-left: -5%; font-size: 120%;">0</span>
+                <i class="fas fa-eye white" style="background: none; scale: .8;"></i>
+              </p>
+            </div>
+            <div class="desc-sentiment display-none">
+              <p onclick="location.href = '/account/login'">
+                <span class="like-count bg-white purple br-5" id="likeNumber" style="padding: .25%;">0</span>
+              </p>
+              <p onclick="location.href = '/account/login'" class="text white">
+                Orang Menyukai Berita Ini
+              </p>
+              <p class="up-down float-right" onclick="location.href = '/account/login'" style="margin-top: 0;">
+                <span class="news-up-down white" id="thumbsUpDown" style="margin-right: 5%; margin-left: -5%; font-size: 120%;">0</span>
+                <i class="material-icons white" style="background: none; scale: .6;">thumbs_up_down</i>
+              </p>
+            </div>
+          </div>
+      <% } %>
+
+      <div class="comment-box bg-white">
+        <div class="upper-comment-box bg-tr-purple white">
+          <span class="count-comment" id="countComment">
+            0
+          </span>
+          <em>komentar</em>
+          <i class='fas fa-comment float-right'></i>
+        </div>
+        <div class="comment-content" data-user="<%= typeof user != 'undefined' ? user.username : 'visitor' %>" data-user-id="<%= typeof user != 'undefined' ? user.user_id : 'visitor' %>">
+          <div class="loading" id="loading" style="display: inline-flex;">
+            <div style="width: 2vw; height: 2vw; background-color: #37003c7d; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+            <div style="width: 2vw; height: 2vw; background-color: #37003cc7; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+            <div style="width: 2vw; height: 2vw; background-color: #37003c; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+          </div>
+        </div>
+        <div class="floor-comment-box bg-tr-purple">
+          <% if( typeof user != 'undefined' ) { %>
+            <div class="input-comment display-none" id="commentFloor">
+              <table>
+                  <form id="commentForm">
+                  <tr>
+                    <td style="width: 95%; padding: 0% 1%;">
+                      <textarea id="commentInput" autocomplete="off" rows="" style="outline: none;"></textarea>
+                    </td>
+                    <td class="text-right" style="width: 5%; padding: 0% 1%;">
+                      <button type="submit" style="background: none; border: none; cursor: pointer;">
+                        <i class="material-icons white">send</i>
+                      </button>
+                    </td>
+                  </tr>
+                </form>
+              </table>
+            </div>
+          <% } %>
+        </div>
+      </div>
+</div>
+
+<script>
+  let iii = 2
+  if( typeof commentInput != 'undefined' ) {
+    commentInput.addEventListener('keydown', function(e) {
+      if( e.key == 'Enter' ) {
+        if( this.style.height >= '8rem' ) return
+        iii += 1
+        this.style.height = iii + 'rem'
+      }
+    })
+  }
+  if( document.querySelector('.container .comment-box .comment-content').dataset.user == 'visitor' ) {
+    document.querySelector('.container .comment-box .comment-content').addEventListener('click', function() {
+      return location.href = '/account/login'
+    })
+  }
+</script>
+
+<script src="./../js/script.js"></script>
+<script id="scriptJs" src="./../js/script-news-like-comment.js"></script>
+<% if( typeof user != 'undefined' ) { %>
+<% } %>

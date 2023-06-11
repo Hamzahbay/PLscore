@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="./../../css/style.css">
+<link rel="stylesheet" href="./../../css/style-news.css">
+
+<!-- Navigation Bar -->
+<div class="navbar bg-purple">
+    <a href="/">
+        <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+    </a>
+    <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+    <!-- Desktop Nav -->
+    <ul class="max-line">
+        <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+        <li class="max-list actived"><a href="/news">Berita</a></li>
+        <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+        <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+        <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+    </ul>
+    <!-- Android/Apple Nav -->
+    <div class="for-js nav-menu">
+        <ul class="min-line">
+            <li class="min-list"><a href="/home">Beranda</a></li>
+            <li class="min-list actived"><a href="/news">Berita</a></li>
+            <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+        </ul>
+    </div> 
+</div>
+
+<div class="container">
+    <h1 class="text-center" id="coba">Unggah Berita</h1>
+  <div class="desc-alert">
+    <%- include('./partials/messages.ejs') %>
+  </div>
+  <% if( user.role == 'admin' || user.role == 'writer' ) { %>
+  <script src="./../../js/tinyMCE.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: '#newsId',
+      mode : "specific_textareas",
+      editor_selector : "mceEditor",
+      plugins: 'autoresize'
+    });
+  </script>
+
+    <form method="POST" action="/news/modify/<%= news._id %>">
+      <textarea id="newsId" name="news">
+        <%= news.content %>
+      </textarea>
+      <table class="bg-tr-purple">
+        <tr>
+          <td class="n-rsp" style="width: 50%;">
+            <p class="white">
+              Tim Kategori: 
+              <span id="labelCtg">
+                <i class="fas fa-plus-circle font-larger" style="cursor: pointer;"></i> 
+                <i class="fas fa-minus-circle font-larger" style="cursor: pointer;"></i>
+              </span>
+            </p>
+          </td>
+          <td class="n-rsp" style="width: 50%;">
+            <p class="white">Sumber: </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="rsp-td text-center white"><p>Tim Kategori: </p></td>
+          <td class="ctg-td" style="padding-right: 1%;">
+            <p>
+              <select name="category0" id="category0" class="category br-10" style="width: 100%; outline: none;">
+                <option value="" hidden>Tim</option>
+                <% for( const m of teams ) { %>
+                    <option value="<%= m.cleanName %>"><%= m.cleanName %></option>
+                <% } %>
+                <option value="" disabled hidden>disabled</option>
+                <option value="" disabled hidden>disabled</option>
+                <option value="" disabled hidden>disabled</option>
+                <option value="Premier League">Liga / Sepak Bola Inggris</option>
+              </select>
+            </p>
+          </td>
+          <td class="rsp-td text-center white"><p>Sumber: </p></td>
+          <td style="padding-right: 1%;">
+            <p>
+            <input type="text" name="source" id="source" class="br-10" placeholder="sumber berita" value="<%= news.source %>" style="width: 100%; outline: none;" required>
+            </p>
+            <!-- <p>
+              <input type="text" name="writer" id="writer" class="br-10" placeholder="penulis berita" style="width: 100%; outline: none;" required>
+            </p> -->
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="white text-center">
+            <p>
+              Thumbnail Berita:
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-right: 1%;">
+            <input type="text" name="thumbnail" id="thumbnailTitle" required class="br-10" value="<%= news.thumbnail %>" style="width: 100%; outline: none;" placeholder="judul thumbnail">
+          </td>
+          <td style="padding-right: 1%;">
+            <input type="text" name="imgThumbnail" id="thumbnailImg" class="br-10" value="<%= news.imgThumbnail %>" style="width: 100%; outline: none;" placeholder="link gambar thumbnail">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding-right: .5%;">
+            <input type="submit" value="Unggah" id="postButton" class="sbm br-10 bg-white purple" style="width: 100%; cursor: pointer; border: none; padding: 5px 0; font-weight: bold;" onclick="return confirm('Apakah Anda Yakin Akan Mengunggah Berita Ini?')">
+          </td>
+        </tr>
+      </table>
+    </form>
+  <script src="./../../js/script-news-modify.js"></script>
+  <% } %>
+</div>
+<script src="./../../js/script.js"></script>

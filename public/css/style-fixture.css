@@ -1,0 +1,211 @@
+.container {
+    margin: 5% 10%;
+    padding: 2%;
+    margin-bottom: 15%;
+    text-align: center;
+    /* background-color: #37003cc2; */
+    background-color: #37003c;
+    border: solid 2px #37003c;
+    border-radius: 20px;
+}
+.container table {
+    width: 100%;
+    color: whitesmoke;
+    font-size: larger;
+    border-collapse: collapse;
+}
+.container table thead tr td {
+    border: solid 1px #37003c;
+    background-color: #37003c;
+}
+.container table tr {
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #37003cc2;
+}
+.container table tr td {
+    padding: 5% 0;
+    border: solid 0px;
+}
+.container table tr .team-name {
+    padding: 0 5%;
+}
+.container table tbody tr:hover {
+    filter: brightness(160%);
+    background-color: #37003c;
+}
+.container table thead tr td:hover {
+    filter: brightness(160%);
+    background-color: #37003c;
+}
+.clicked {
+    filter: brightness(160%);
+    background-color: #37003c;
+}
+
+.search-team {
+    text-align: center;
+    margin-top: 5%;
+}
+.search-team input {
+    margin-bottom: 1%;
+    width: 40%;
+    border-radius: 10px;
+    text-align: center;
+    color: #37003c;
+    font-size: larger;
+    border: solid 1px #37003c;
+}
+.search-team div button {
+    width: 40%;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #37003c;
+    color: whitesmoke;
+    font-size: larger;
+    margin: .5%;
+}
+
+.details-match {
+    margin: auto 7.5%;
+    margin-top: -5%;
+    padding: 2%;
+    background-color: whitesmoke;
+    z-index: 11;
+    position: sticky;
+    top: 1%;
+    border-radius: 10px;
+}
+.details-match table {
+    color: whitesmoke;
+    border-collapse: collapse;
+    width: 100%;
+}
+.details-match table tbody tr td {
+    padding: 1.5vh 2%;
+    background-color: #37003cd3;
+    border: solid 0px whitesmoke;
+}
+.details-match table thead tr td {
+    padding: 1% 2%;
+    border: solid 0px whitesmoke;
+}
+.details-match table thead tr {
+    border: solid 1px lightgray;
+    background-color: #37003c;
+}
+.details-match .back {
+    margin-top: 1%;
+    background-color: #37003c;
+    padding: 1% 0;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    color: whitesmoke;
+}
+.details-match .back:hover {
+    background-color: lightgray;
+    color: #37003c;
+}
+.details-match table tbody tr:hover {
+    background-color: #37003c;
+    filter: brightness(120%);
+}
+.details-bg {
+    position: fixed;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: #37003cd7;
+}
+
+.loading {
+    width: 100%;
+    height: 60vh;
+    margin: 10% 0;
+}
+.loading div {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #37003c;
+}
+
+.container {
+    color: whitesmoke;
+}
+.schedule-off {
+    /* margin: .5% 0; */
+    padding: 1%;
+}
+
+
+
+
+
+
+
+
+@media( max-width: 800px ) {
+    .container table {
+        font-size: large;
+    }
+    .title {
+        font-size: large;
+    }
+    .search-team input {
+        font-size: medium;
+        width: 60%;
+    }
+    .search-team div button {
+        font-size: medium;
+        width: 60%;
+    }
+    .details-match {
+        margin-top: -5%;
+        font-size: medium;
+    }
+    .details-match table {
+        height: 90vh;
+    }
+}
+@media( max-width: 600px ) {
+    .container {
+        margin: 10% 5%;
+        margin-bottom: 20%;
+    }
+    .container table {
+        font-size: small;
+    }
+    .title {
+        font-size: medium;
+    }
+    .search-team div button {
+        font-size: small;
+    }
+    .details-match {
+        font-size: small;
+    }
+}
+@media( max-width: 400px ) {
+    .container {
+        margin: 10% 1%;
+    }
+    .container table {
+        font-size: x-small;
+    }
+    .title {
+        font-size: small;
+    }
+    .search-team input {
+        font-size: small;
+        width: 70%;
+    }
+    .search-team div button {
+        font-size: smaller;
+        width: 70%;
+    }
+    .details-match {
+        font-size: x-small;
+    }
+}

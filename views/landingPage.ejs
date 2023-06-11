@@ -1,0 +1,84 @@
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style-landingPage.css">
+
+<% if( typeof user == 'undefined' ) { %>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+            </ul>
+        </div> 
+    </div>
+  <% } else{ %>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+            </ul>
+        </div> 
+    </div>
+  <% } %>
+
+<div class="container bg-lightgray">
+    <div class="first">
+        <p class="opac-0 title-text1 text-center white">PL<em style="text-decoration: line-through;">score</em></p>
+        <p class="opac-0 title-text text-center white">Situs Web Liga Inggris Berbahasa Indonesia</p>
+    </div>
+    <div class="second bg-lightgray" style="padding: 2.5% 0;">
+        <div class="first-cont bg-tr-purple">
+            <span class="text-event display-none opac-0 lightgray">Skor dan Klasemen Top Liga Inggris Terbaru, Detail Pertandingan dan Jadwal Pertandingan</span>
+            <img src="./img/img5.jpg" alt="">
+            <span class="text white opac-10">Berita Terkini Tentang Transfer Pemain, Pemain muda, Pelatih dan Keseruan Dalam Pertandingan</span>
+        </div>
+        <div class="second-cont bg-tr-purple">
+            <span class="text-event opac-10 white">Rekor-rekor Musim dan Sepanjang Masa dari Top Skor, Top Assist, kemenangan Terbanyak hingga Top kartu merah</span>
+            <img src="./img/img8.jpg" alt="" class="img-mouseover">
+            <span class="text lightgray display-none opac-0">Detail dan Spesifikasi Pemain-pemain Liga Inggris, Club, Pelatih, Sejarah dan Juga Legenda-legenda Liga Inggris</span>
+        </div>
+    </div>
+    <div class="last text-center opac-0">
+        <a href="/account/register" class="none-decoration white font-larger bg-purple">Daftar Sekarang!!</a>
+    </div>
+    <div class="third">
+        <p class="text-center white br-10">Lengkap dengan Sumber Terpercaya</p>
+    </div>
+</div>
+
+<script src="./js/script-landingPage.js"></script>
+<script src="./js/script.js"></script>

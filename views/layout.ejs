@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Berita Liga Inggris Dengan Bahasa Indonesia/webpage">
+    <meta property="og:url" content="https://plscore..herokuapp.com/">
+    <meta property="og:description" content="PLscore/webpage">
+    <meta property="og:image" content="./img/logoepl2.png">
+    <meta property="og:image" content="./../img/logoepl2.png">
+    <meta property="og:image" content="./../../img/logoepl2.png">
+    <link rel="icon" href="./img/logoepl2.png">
+    <link rel="icon" href="./../img/logoepl2.png">
+    <link rel="icon" href="./../../img/logoepl2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>PLscore - <%= page %></title>
+</head>
+<body>
+
+    <%- body %>
+
+    <!-- Footer -->
+    <div class="footer bg-purple white text-center" id="footer">
+        <span>PL<em>score</em></span><p>Copyright @ 2020 | PLscore Allright deserved | <a href="https://web.whatsapp.com/send?phone=081259802988&text&app_absent=0" class="white">Contact</a></p>
+    </div>
+
+<!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
+<script>
+    if( document.querySelector('.container').dataset.footerNone == 'true' ) document.getElementById('footer').remove()
+</script>
+<script src="./js/font-awesome.js"></script>
+<script src="./../js/font-awesome.js"></script>
+<script src="./../../js/font-awesome.js"></script>
+<script src="./../../../js/font-awesome.js"></script>
+</body>
+</html>

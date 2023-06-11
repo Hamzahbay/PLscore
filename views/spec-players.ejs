@@ -1,0 +1,152 @@
+<link rel="stylesheet" href="./../../css/style.css">
+
+<% if( typeof user == 'undefined' ) { %>
+    <!-- Navigation Bar -->
+    <div class="navbar bg-purple">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list actived"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list actived"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+            </ul>
+        </div> 
+    </div>
+<% } else{ %>
+    <!-- Navigation Bar -->
+    <div class="navbar bg-purple">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list actived"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list actived"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+            </ul>
+        </div> 
+    </div>
+<% } %>
+
+<style>
+    .container {
+        margin: 10% 5%;
+    }
+    .container .content-box table {
+        width: 100%;
+        /* margin: 2.5% 0; */
+        border-radius: 0 0 5px 5px;
+        background-color: #37003cc7;
+        color: whitesmoke;
+        border-collapse: collapse;
+    }
+    .container .content-box .tImg {
+        border-radius: 5px 5px 0 0;
+        margin-top: 5%;
+    }
+    .container .content-box .tImg tr td {
+        text-align: center;
+    }
+    .container .content-box .tDe tr {
+        border-radius: 5px;
+    }
+    .container .content-box .tDe tr:hover {
+        background-color: whitesmoke;
+        color: #37003c;
+        transition: all 100ms;
+    }
+    .container .content-box table tr td {
+        padding: 1%;
+    }
+    .container .content-box .tDe tr td {
+        padding: 2.5vh 1%;
+    }
+    .container .content-box .box img {
+        min-width: 100px;
+        max-width: 200px;
+        transition: all 100ms;
+    }
+
+    .postNews-rdr:hover {
+        background-color: #37003cc7;
+        color: whitesmoke;
+        transition: all 200ms;
+    }
+
+    .loading {
+        margin: 25vh 47%;
+    }
+
+    @media( max-width: 1080px ) {
+    }
+    @media( max-width: 800px ) {
+        .container {
+            margin: 15% 5%;
+        }
+    }
+    @media( max-width: 600px ) {
+    }
+    @media( max-width: 480px ) {
+        .container {
+            margin: 20% 5%;
+        }
+        .container .content-box .tDe tr td {
+            padding: 2.5vh .5%;
+            font-size: smaller;
+        }
+    }
+    @media( max-width: 400px ) {
+        .container {
+            margin: 25% 5%;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="titles">
+        <h2 class="purple text-center"></h2>
+    </div>
+
+    <a id="back" href="/spec" style="text-decoration: none;">
+        <div class="postNews-rdr text-center purple bg-white br-5" style="padding: 2.5% 0;">
+            Kembali
+        </div>
+    </a>
+
+    <div class="loading" id="loading" style="display: inline-flex;">
+        <div style="width: 2vw; height: 2vw; background-color: #37003c7d; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+        <div style="width: 2vw; height: 2vw; background-color: #37003cc7; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+        <div style="width: 2vw; height: 2vw; background-color: #37003c; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+    </div>
+
+    <div class="content-box display-none"></div>
+</div>
+
+<script src="./../../js/script.js"></script>
+<script src="./../../js/script-spec-players.js"></script>

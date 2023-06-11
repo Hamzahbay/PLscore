@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="./../css/style.css">
+
+<style>
+    .container {
+        margin: 10% 5%;
+    }
+
+    .fixtures-rdr:hover {
+        background-color: #37003c;
+        color: whitesmoke;
+        transition: all 200ms;
+    }
+    .submit-label:hover {
+        filter: brightness(150%);
+    }
+
+    .container .content-box form {
+        /* display: grid; */
+        background-color: #37003cc7;
+        border-radius: 5px;
+        margin: .5% 0;
+    }
+    .container .content-box .box-side {
+        /* display: grid; */
+        padding: .5% 1%;
+    }
+    .container .content-box .box-side input, .container .content-box .box-side select {
+        width: 100%;
+    }
+    .container .content-box .box-side label {
+        color: whitesmoke;
+    }
+
+    .container .content-table {
+        /* padding: .5%; */
+        margin: 2.5% 0;
+    }
+    .container .content-table table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .container .content-table table thead tr td i {
+        float: right;
+        cursor: pointer;
+        margin-right: 2.5%;
+    }
+    .container .content-table table tbody tr td {
+        padding: 2.5% 1.5%;
+    }
+    .container .content-table table tbody tr .img {
+        width: 10%;
+    }
+    .container .content-table table tbody tr td img {
+        width: 100%;
+    }
+    .container .content-table table tbody tr:hover {
+        background-color: #37003cc7;
+        color: whitesmoke;
+    }
+
+    .loading {
+        margin: 25vh 47%;
+    }
+
+    @media( max-width: 1080px ) {
+    }
+    @media( max-width: 800px ) {
+        .container {
+            margin: 15% 5%;
+        }
+    }
+    @media( max-width: 600px ) {
+        .container .content-box .box {
+            width: 100%;
+        }
+        /* .container .content-box .box-side {
+            display: grid;
+            width: 96%;
+            text-align: left;
+        } */
+        /* .container .content-box .box-side input, .container .content-box .box-side select {
+            width: 100%;
+        } */
+        /* .container .content-box form {
+            display: grid;
+        } */
+        /* .v {
+            display: none;
+        } */
+        .container .content-table table {
+            font-size: smaller;
+        }
+    }
+    @media( max-width: 480px ) {
+        .container {
+            margin: 20% 5%;
+        }
+        .container .content-table table tbody tr td {
+            padding: 5% 0%;
+        }
+        .container .content-table table tbody tr td .name {
+            width: 15%;
+        }
+        .container .content-table table tbody tr td .img {
+            width: 30%;
+        }
+        .container .content-table table tbody tr .v {
+            width: 5%;
+        }
+    }
+    @media( max-width: 400px ) {
+        .container {
+            margin: 25% 1%;
+        }
+    }
+</style>
+
+<!-- Navigation Bar -->
+<div class="navbar bg-purple">
+    <a href="/">
+        <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+    </a>
+    <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+    <!-- Desktop Nav -->
+    <ul class="max-line">
+        <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+        <li class="max-list"><a href="/news">Berita</a></li>
+        <li class="max-list actived"><a href="/fixtures">Pertandingan</a></li>
+        <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+        <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+    </ul>
+    <!-- Android/Apple Nav -->
+    <div class="for-js nav-menu">
+        <ul class="min-line">
+            <li class="min-list"><a href="/home">Beranda</a></li>
+            <li class="min-list"><a href="/news">Berita</a></li>
+            <li class="min-list actived"><a href="/fixtures">Pertandingan</a></li>
+            <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+        </ul>
+    </div> 
+</div>
+
+<div class="container" data-user-id="<%= user.user_id %>">
+    <div class="titles">
+        <h2 class="text-center purple"></h2>
+    </div>
+
+    <a href="/fixtures" style="text-decoration: none;">
+        <div class="fixtures-rdr text-center purple bg-white br-5" style="padding: 2.5% 0;">
+            Kembali
+        </div>
+    </a>
+
+    <div class="content-table bg-white br-5">
+        <div class="loading" id="loading" style="display: inline-flex;">
+            <div style="width: 2vw; height: 2vw; background-color: #37003c7d; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+            <div style="width: 2vw; height: 2vw; background-color: #37003cc7; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+            <div style="width: 2vw; height: 2vw; background-color: #37003c; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+        </div>
+    </div>
+</div>
+
+<script src="./../js/script.js"></script>
+<script src="./../js/script-fixtures-details-match.js" type="application/javascript"></script>

@@ -1,0 +1,108 @@
+.container {
+    margin-top: 5rem;
+}
+.container .first {
+    background-image: url('../img/img9.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10% 0;
+    margin-top: -15vh;
+}
+.container .first p {
+    transition: ease-in-out 500ms;
+    font-size: 5vw;
+    margin-bottom: 10%;
+}
+.container .first .title-text1 {
+    margin-top: -10%;
+    font-size: 10vw;
+}
+.container .first .title-text {
+    transition: ease-in-out 500ms;
+    margin-top: -20%;
+}
+
+.container .second img {
+    width: 50%;
+    cursor: pointer;
+    transition: ease-in-out 500ms;
+    border-radius: 1mm;
+    margin-bottom: -.5vh;
+}
+.container .second .first-cont {
+    margin: 10% 5%;
+    border-radius: 10px;
+}
+.container .second .second-cont {
+    margin: 10% 5%;
+    border-radius: 10px;
+}
+.container .second .text {
+    position: absolute;
+    margin: 5% 0%;
+    margin-right: 5%;
+    margin-left: 1%;
+    font-size: 3vw;
+    transition: ease-in-out 200ms;
+}
+.container .second .text-event {
+    margin: 5% 0%;
+    margin-right: 50%;
+    margin-left: 2%;
+    position: absolute;
+    font-size: 3vw;
+    transition: ease-in-out 200ms;
+}
+.container .second .img-mouseover {
+    margin-left: 50%;
+}
+
+.container .third {
+    background-image: url('../img/img10.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10% 0;
+}
+.container .third p {
+    font-size: 5vw;
+    padding: .5% 1%;
+    margin: 0 1%;
+    background-color: rgba(27, 3, 3, 0.324);
+}
+
+.container .last {
+    padding: 5%;
+    margin-bottom: 10%;
+    transition: ease-in-out 500ms;
+}
+.container .last a {
+    margin-left: -50%;
+    padding: 1% 5%;
+    transition: ease-in-out 500ms;
+    border-radius: 10px;
+}
+.container .last a:hover {
+    filter: brightness(120%);
+}
+
+@media(max-width: 800px) {
+    .container .last {
+        opacity: 1;
+    }
+    .container .last a {
+        font-size: medium;
+        margin-left: 0;
+    }
+    .navbar {
+        background-color: #37003c;
+    }
+    .container .first {
+        padding: 15% 0;
+        margin-top: 0;
+    }
+}
+@media(max-width: 620px) {
+    .container {
+        margin-top: 4rem;
+    }
+}

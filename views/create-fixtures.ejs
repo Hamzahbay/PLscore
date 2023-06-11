@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="./../css/style.css">
+
+<style>
+    .container {
+        margin: 10% 5%;
+    }
+
+    .fixtures-rdr:hover {
+        background-color: #37003c;
+        color: whitesmoke;
+        transition: all 200ms;
+    }
+    .submit-label:hover {
+        filter: brightness(150%);
+    }
+
+    .container .content-box form {
+        display: flex;
+        background-color: #37003cc7;
+        border-radius: 5px;
+        margin: .5% 0;
+    }
+    .container .content-box .box-side {
+        /* display: inline-block; */
+        margin: 1% 0;
+        /* margin-left: .5%; */
+        width: 47.5%;
+        padding: 2.5% 1%;
+    }
+    .container .content-box .box-side label {
+        color: whitesmoke;
+    }
+
+    @media( max-width: 1080px ) {
+    }
+    @media( max-width: 800px ) {
+        .container {
+            margin: 15% 5%;
+        }
+    }
+    @media( max-width: 600px ) {
+        .container .content-box .box {
+            width: 100%;
+        }
+        .container .content-box .box-side {
+            display: grid;
+            width: 96%;
+            text-align: left;
+        }
+        .container .content-box .box-side input, .container .content-box .box-side select {
+            width: 100%;
+        }
+        .container .content-box form {
+            display: grid;
+        }
+        .v {
+            display: none;
+        }
+    }
+    @media( max-width: 480px ) {
+        .container {
+            margin: 20% 5%;
+        }
+    }
+    @media( max-width: 400px ) {
+        .container {
+            margin: 25% 5%;
+        }
+    }
+</style>
+
+    <!-- Navigation Bar -->
+    <div class="navbar bg-purple">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list actived"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list actived"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+            </ul>
+        </div> 
+    </div>
+
+    <div class="container">
+        <a href="/fixtures" style="text-decoration: none;">
+            <div class="fixtures-rdr text-center purple bg-white br-5" style="padding: 2.5% 0;">
+              Kembali
+            </div>
+          </a>
+        <div class="content-box">
+            <form action="/fixtures/create" method="POST">
+                <div class="box-side-left box-side">
+                    <p>
+                        <label for="homeTeam">Tim Kandang:</label><br>
+                        <select name="homeTeam" id="homeTeam" class="team" required>
+                            <option value="" data-team-id="">Tim1</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="homeScore">Skor Tim Kandang:</label><br>
+                        <input type="number" name="homeScore" id="homeScore" class="score" required placeholder="Skor">
+                    </p>
+                    <p id="homeGoalScoredLabel"></p>
+                </div>
+                <div class="v m-10 white">VS</div>
+                <div class="box-side-right box-side text-right">
+                    <p>
+                        <label for="awayTeam">Tim Tandang</label><br>
+                        <select name="awayTeam" id="awayTeam" class="team" required>
+                            <option value="" data-team-id="">Tim2</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="awayScore">Skor Tim Tandang</label><br>
+                        <input type="number" name="awayScore" id="awayScore" class="score" required placeholder="Skor">
+                    </p>
+                    <p id="awayGoalScoredLabel"></p>
+                </div>
+                <input type="submit" id="submitFix" value="buat" class="display-none">
+            </form>
+            <label for="submitFix">
+                <div class="submit-label br-5 bg-purple white text-center" style="padding: .5% 0; cursor: pointer;">
+                    Buat
+                </div>
+            </label>
+        </div>
+    </div>
+
+<script src="./../js/script.js"></script>
+<script src="./../js/script-create-detail-fixtures.js"></script>

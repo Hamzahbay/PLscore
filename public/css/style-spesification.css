@@ -1,0 +1,276 @@
+.draft {
+    text-align: center;
+    margin-bottom: 20vh;
+}
+.search-details {
+    text-align: center;
+}
+.search-details #search-player {
+    width: 50%;
+    text-align: center;
+    background: #37003c60;
+    color: #37003c;
+    border: solid 1px #37003c;
+    border-radius: 10px;
+    font-size: 150%;
+}
+.search-details #search-player:focus {
+    filter: brightness(160%);
+    color: whitesmoke;
+}
+.search-details div button {
+    width: 50%;
+    font-size: 120%;
+    margin: 1% 0;
+    background-color: #37003c;
+    color: whitesmoke;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.search-details div button:hover {
+    filter: brightness(160%);
+}
+.draft .teams {
+    display: inline-flex;
+    margin: 5% 2%;
+    width: 20%;
+    min-width: 200px;
+    cursor: pointer;
+}
+.draft .teams .card-teams {
+    border-radius: 10px;
+    width: 100%;
+    border: solid 2px #37003c;
+    background-color: #37003c79;
+}
+.draft .teams .card-teams div {
+    color: whitesmoke;
+    border-radius: 5px 5px 0 0;
+    padding: 5% 0;
+    background-color: #37003c;
+}
+.draft .teams img {
+    padding: 0 1%;
+    padding-top: 10%;
+    width: 20%;
+    min-width: 150px;
+    transition: cubic-bezier(0.23, 1, 0.320, 1) 750ms;
+}
+.draft .teams img:hover {
+    transform: scale(0.8);
+}
+.draft .teams .card-teams:hover {
+    box-shadow: 5px 5px 10px 2px;
+    transition: cubic-bezier(0.23, 1, 0.320, 1) 500ms;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 5%;
+    color: #37003c;
+}
+
+.players-index {
+    margin-bottom: 10%;
+}
+.players-index .back {
+    text-align: center;
+    font-size: x-large;
+    color: whitesmoke;
+    background-color: #37003c;
+    margin: 0 40%;
+    padding: 1% 0;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.players-index .details table {
+    margin: 5% 10%;
+    margin-bottom: 10%;
+    width: 80%;
+    border: solid 1px black;
+}
+.players-index .details table thead {
+    color: whitesmoke;
+    background-color: #37003c;
+}
+.players-index .details table tr td {
+    border: solid 1px black;
+}
+.players-index .details table thead tr td {
+    padding: 1.25% 0;
+    border: solid 2px #37003c;
+}
+.players-index .details table tbody {
+    color: whitesmoke;
+    background-color: #37003c79;
+}
+.players-index .details table tbody tr td {
+    border: solid 2px transparent;
+    padding: 2.5% 0;
+}
+.players-index .details table tbody tr {
+    cursor: pointer;
+}
+.players-index .details table tbody tr:hover {
+    background-color: #37003c;
+    filter: brightness(150%);
+}
+.back:hover {
+    filter: brightness(200%);
+}
+
+.players-index .details-click, .player-search-result {
+    position: fixed;
+    top: 5%;
+    bottom: 5%;
+    left: 20%;
+    width: 50%;
+    padding: 2.5% 5%;
+    color: whitesmoke;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    z-index: 10;
+}
+.players-index .details-click table, .player-search-result table {
+    width: 100%;
+    height: 90%;
+    background-color: #37003c;
+    border-radius: 20px 20px 0 0;
+    font-size: small;
+}
+.players-index .details-click table thead tr td, .player-search-result table thead tr td {
+    border-bottom: solid 1px lightgray;
+    padding: 2% 0;
+}
+.players-index .details-click table tbody tr td, .player-search-result table tbody tr td {
+    border: solid 1px transparent;
+    /* padding: .5% 0; */
+}
+.players-index .details-click table tbody tr:hover, .player-search-result table tbody tr:hover {
+    filter: brightness(160%);
+    background-color: #37003c;
+}
+.players-index .details-click .back, .player-search-result .back {
+    text-align: center;
+    font-size: small;
+    margin: 0 35%;
+    margin-top: 2%;
+    color: whitesmoke;
+    background-color: #37003c;
+    padding: 1% 0;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.players-index .details-click span, .player-search-result span {
+    float: right;
+    margin-right: -7%;
+    margin-top: -3%;
+    color: #37003c;
+    cursor: pointer;
+    font: bolder;
+}
+.bg-disabled {
+    z-index: 8;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #37003c60;
+}
+
+.sticky-backward i:hover {
+    filter: brightness(200%);
+}
+
+.loading {
+    width: 100%;
+    height: 80vh;
+    margin: 10% 0;
+}
+.loading div {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #37003c;
+}
+
+
+
+
+
+
+
+
+@media(max-width: 800px) {
+    .search-details #search-player, .search-details div button {
+        width: 60%;
+        font-size: 120%;
+    }
+    .players-index {
+        margin-bottom: 20%;
+    }
+    .players-index .details table {
+        margin-bottom: 30%;
+        font-size: small;
+    }
+    .players-index .back {
+        font-size: small;
+    }
+    .players-index .details-click {
+        font-size: x-small;
+        width: 80%;
+        left: 5%;
+        top: 3%;
+        bottom: 2%;
+    }
+    .players-index .details-click table {
+        font-size: x-small;
+    }
+    .players-index .details-click span {
+        margin-right: -3%;
+        margin-top: 0;
+        font-size: small;
+    }
+}
+@media(max-width: 600px) {
+    h2 {
+        font-size: large;
+    }
+    .search-details #search-player, .search-details div button {
+        width: 70%;
+        font-size: 120%;
+    }
+    .players-index .details-click, .player-search-result {
+        font-size: x-small;
+        width: 80%;
+        left: 5%;
+        top: 3%;
+        bottom: 2%;
+    }
+    .players-index .details-click table {
+        font-size: xx-small;
+    }
+    .players-index .details-click span {
+        margin-right: -3%;
+        margin-top: 0;
+        font-size: small;
+    }
+    .players-index .details-click .back {
+        font-size: xx-small;
+    }
+    .players-index .details-click table tbody tr td {
+        border: solid 1px transparent;
+    }
+}
+@media(max-width: 300px) {
+    .players-index .back {
+        font-size: xx-small;
+    }
+}
+
+
+

@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style-home-slide-news.css">
+
+<% if( typeof user == 'undefined' ) { %>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list actived"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list actived"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/account/login"><i class="fa fa-user-circle" style="font-size:26px;"><span id="usename-account"></span></i></a></li>
+            </ul>
+        </div> 
+    </div>
+<% } else{ %>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/">
+            <div class="logo"><img src="/img/logoepl2.png"><span><b>PL</b><em>score</em></span></div>
+        </a>
+        <i class="material-icons" style="font-size:30px;color: whitesmoke;">view_headline</i>
+        <!-- Desktop Nav -->
+        <ul class="max-line">
+            <li class="max-list actived"><a href="/home"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+            <li class="max-list"><a href="/news">Berita</a></li>
+            <li class="max-list"><a href="/fixtures">Pertandingan</a></li>
+            <li class="max-list"><a href="/spec">Spesifikasi</a></li>
+            <li class="max-list"><a href="/profile"><%= user.username %></a></li>
+        </ul>
+        <!-- Android/Apple Nav -->
+        <div class="for-js nav-menu">
+            <ul class="min-line">
+                <li class="min-list actived"><a href="/home">Beranda</a></li>
+                <li class="min-list"><a href="/news">Berita</a></li>
+                <li class="min-list"><a href="/fixtures">Pertandingan</a></li>
+                <li class="min-list"><a href="/spec">Spesifikasi</a></li>
+                <li class="min-list"><a href="/profile"><%= user.username %></a></li>
+            </ul>
+        </div> 
+    </div>
+<% } %>
+    
+    <!-- Content -->
+    <div class="container" data-actor="<%= typeof user != 'undefined' ? user.role : 'visitor' %>" data-favourite-team="<%= typeof team != 'undefined' ? team : '' %>">
+        <!-- Slideshow -->
+        <div class="news-slideshow">
+            <div class="loading" id="loading" style="display: inline-flex;">
+                <div style="width: 2vw; height: 2vw; background-color: #37003c7d; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+                <div style="width: 2vw; height: 2vw; background-color: #37003cc7; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+                <div style="width: 2vw; height: 2vw; background-color: #37003c; margin: 5px 0%; transition: ease-in-out 400ms; display: flexbox; border-radius: 50%;"></div>
+            </div>
+            <div class="news-slideshow-img"></div>
+            <div class="news-slideshow-ico">
+                <div class="angle">
+                    <i class='fas fa-angle-left'></i>
+                    <i class='fas fa-angle-right'></i>
+                </div>
+                <div class="dot">
+                    <i class='fas fa-square actived-i'></i>
+                    <i class='fas fa-square'></i>
+                    <i class='fas fa-square'></i>
+                    <i class='fas fa-square'></i>
+                </div>
+            </div>
+            <div class="news-slideshow-text"></div>
+        </div>
+
+        <div class="content">
+            <!-- Last Fixtures -->
+            <% if( typeof user != 'undefined' ) { %>
+                <div class="last-fix-favo fix display-none">
+                    <h3 class="">Pertandingan <%= user.favourite %> Terbaru</h3>
+                    <div class="content-box"></div>
+                </div>
+            <% } %>
+            <div class="last-fix fix display-none">
+                <h3 class="">Pertandingan Liga Terbaru</h3>
+                <div class="content-box"></div>
+            </div>
+            <% if( typeof user != 'undefined' ) { %>
+                <!-- Hot -->
+                <div class="hot-news news content-items display-none">
+                    <h3 class="">Terhangat</h3>
+                    <div class="content-box"></div>
+                </div>
+            <% } %>
+            <!-- Most Viewed -->
+            <div class="most-view news content-items display-none">
+                <h3 class="">Paling Banyak Dilihat</h3>
+                <div class="content-box"></div>
+            </div>
+            <!-- Most Liked -->
+            <div class="most-liked news content-items display-none">
+                <h3 class="">Paling Banyak Disukai</h3>
+                <div class="content-box"></div>
+            </div>
+            <% if( typeof user != 'undefined' ) { %>
+                <!-- Top Score -->
+                <div class="top-goal top display-none">
+                    <h3 class="">Goal Terbanyak</h3>
+                    <div class="content-box"></div>
+                </div>
+                <!-- Top Assist -->
+                <div class="top-assist top display-none">
+                    <h3 class="">Assist Terbanyak</h3>
+                    <div class="content-box"></div>
+                </div>
+                <!-- Most Cleansheets -->
+                <div class="most-cleansheets top display-none">
+                    <h3 class="">Cleansheets Terbanyak</h3>
+                    <div class="content-box"></div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+<script src="./js/script.js"></script>
+<script src="./js/script-home.js"></script>
